@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable } from 'rxjs';
 import { Brand } from '../shared/models/brand';
@@ -15,8 +15,13 @@ export class ShopService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(){
-    return this.http.get<Pagination<Product[]>>(this.baseUrl+'products');
+  getProducts(brandId?: number, typeId?: number, sort?: string){
+    let params = new HttpParams();
+
+    if (brandId) params = params.append('brandId', brandId); 
+    if (typeId) params = params.append('typeId', typeId); 
+    if(sort) params = params.append('sort', sort);
+    return this.http.get<Pagination<Product[]>>(this.baseUrl+'products', {params});
   }
   getBrands(){
     return this.http.get<Brand[]>(this.baseUrl+'products/brands');
