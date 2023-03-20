@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http'
 import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
+import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { ShopModule } from './shop/shop.module';
     HttpClientModule,
     CoreModule,
     ShopModule,
+    HomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
